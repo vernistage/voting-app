@@ -1,5 +1,6 @@
 const ProductList = React.createClass({
   render: function() {
+    const product = Data[0];
     return (
       <div className='ui items'>
         <Product
@@ -38,8 +39,8 @@ const Product = React.createClass({
           <div className='extra'>
             <span>Submitted by:</span>
             <img
-            className='ui avatar image'
-            src={this.props.submitter_avatar_url}
+              className='ui avatar image'
+              src={this.props.submitter_avatar_url}
             />
           </div>
         </div>
