@@ -1,6 +1,6 @@
 const ProductList = React.createClass({
   handleProductUpVote: function (productId) {
-    console.log(productId + " was upvoted.")
+    console.log(productId + " was upvoted.");
   },
   render: function() {
     const products = Data.map((product) => {
@@ -27,7 +27,7 @@ const ProductList = React.createClass({
 });
 
 const Product = React.createClass({
-  handleupVote: function(){
+  handleUpVote: function () {
     this.props.onVote(this.props.id);
   },
   render: function() {
