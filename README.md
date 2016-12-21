@@ -1,2 +1,2 @@
 # voting-app
-tutorial from Fullstack React tutorial
+[Fullstack React tutorial](ReactJS tutorial from Fullstack React)
