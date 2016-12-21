@@ -1,2 +1,2 @@
 # voting-app
-[Fullstack React tutorial](http://www.fullstackreact.com)
+Completed coding challenges from the [Fullstack React tutorial](http://www.fullstackreact.com).
