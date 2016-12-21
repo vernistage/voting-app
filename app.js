@@ -2,14 +2,32 @@ const ProductList = React.createClass({
   getInitialState: function () {
     return {
       products: [],
+      orderTrack: 0,
     };
   },
   componentDidMount: function () {
       this.updateState();
   },
+  updateOrder: function() {
+    var products = [];
+    var orderTrack = null
+    if(this.state.orderTrack == 0) {
+      products = Data.sort((a, b) => {
+        return b.votes - a.votes;
+      });
+      orderTrack = 1;
+    }
+    else {
+      products = Data.sort((a, b) => {
+        return a.votes - b.votes;
+      });
+      orderTrack = 0;
+    }
+    this.setState({ products: products, orderTrack: orderTrack})
+  },
   updateState: function () {
     const products = Data.sort((a, b) => {
-      return b.votes - a.votes;
+      return a.votes - b.votes;
     });
     this.setState({ products: products });
   },
@@ -20,7 +38,7 @@ const ProductList = React.createClass({
         return;
       }
     });
-    this.updateState();
+    this.updateOrder();
   },
   handleProductDownVote: function (productId) {
     Data.forEach((el) => {
@@ -29,7 +47,7 @@ const ProductList = React.createClass({
         return;
       }
     });
-    this.updateState();
+    this.updateOrder();
   },
   render: function() {
     const products = this.state.products.map((product) => {
@@ -50,9 +68,26 @@ const ProductList = React.createClass({
     });
     return (
       <div className='ui items'>
+        <SortButton
+          products={products}
+          toggleSort={this.updateOrder}
+        />
         {products}
       </div>
     )
+  },
+});
+
+const SortButton = React.createClass({
+  handleSort: function () {
+    this.props.toggleSort();
+  },
+  render: function() {
+    return (
+      <button onClick={this.handleSort} className='ui button'>
+        Toggle sort
+      </button>
+    );
   },
 });
 
