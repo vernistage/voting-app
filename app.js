@@ -84,7 +84,7 @@ const SortButton = React.createClass({
   },
   render: function() {
     return (
-      <button onClick={this.handleSort} className='ui button'>
+      <button onClick={this.handleSort} className='fluid ui button'>
         Toggle sort
       </button>
     );
